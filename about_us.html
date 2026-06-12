@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - BARTERIN{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+  <h1><i class="fas fa-info-circle"></i> About BARTERIN</h1>
+
+  <div class="about-content">
+    <div class="about-section">
+      <h2>Tentang Kami</h2>
+      <p>BARTERIN adalah platform inovatif yang memudahkan Anda untuk bertukar barang tanpa menggunakan uang tunai. Kami
+        percaya bahwa setiap barang memiliki nilai dan bisa berguna bagi orang lain.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Visi & Misi</h2>
+      <p><strong>Visi:</strong> Menciptakan ekosistem pertukaran barang yang efisien dan berkelanjutan.</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Mengurangi konsumsi berlebihan</li>
+        <li>Memberikan nilai tambah pada barang bekas</li>
+        <li>Membangun komunitas yang saling percaya</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="about-container">
+  <h2> Behind the mind of Barterin</h2>
+
+  <div class="photo-section">
+    <a>
+      <img src="{{ url_for('static', filename='images/photo_ceo.jpg') }}" alt="Photo">
+    </a>
+  </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}BARTERIN - Tukar Barang Online{% endblock %}
+
+{% block content %}
+<div class="home-header">
+    <div class="search-container">
+        <input type="text" placeholder="Cari barang...">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Semua</button>
+        <button class="filter-tab" data-filter="featured">Featured</button>
+        <button class="filter-tab" data-filter="highlight">Highlight</button>
+    </div>
+</div>
+
+<div class="item-container">
+    {% if items %}
+    {% for item in items %}
+    <div class="item-card" data-package="{{ item.package }}">
+        {% if item.package == 'featured' %}
+        <div class="item-badge featured">FEATURED</div>
+        {% elif item.package == 'highlight' %}
+        <div class="item-badge highlight">HIGHLIGHT</div>
+        {% endif %}
+
+        <div class="item-image">
+            {% if item.photo_url %}
+            <img src="{{ item.photo_url }}" alt="{{ item.name }}">
+            {% else %}
+            <div class="no-image">
+                <i class="fas fa-image"></i>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="item-info">
+            <h3 class="item-title">{{ item.name }}</h3>
+
+            <div class="item-meta">
+                <span><i class="fas fa-star"></i> 4.8 (12)</span>
+                <span><i class="fas fa-tag"></i> {{ item.condition or 'Baru' }}</span>
+                <span><i class="fas fa-exchange-alt"></i> {{ item.wanted_item or 'Bebas' }}</span>
+            </div>
+
+            <div class="item-user">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="username">{{ item.username }}</span>
+            </div>
+
+            <button class="barter-btn">
+                <i class="fas fa-handshake"></i> AJAK BARTER
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="empty-state">
+        <i class="fas fa-box-open"></i>
+        <h3>Belum ada barang tersedia</h3>
+        <p>Jadilah yang pertama mengupload barang!</p>
+        <a href="{{ url_for('upload') }}" class="btn-upload">
+            <i class="fas fa-plus"></i> Unggah Barang
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

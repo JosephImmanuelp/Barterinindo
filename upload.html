@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Barang - BARTERIN{% endblock %}
+
+{% block content %}
+<div class="upload-container">
+  <h1><i class="fas fa-upload"></i> Upload Barang Barter</h1>
+
+  <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="upload-form">
+    <div class="form-group">
+      <label for="name">Nama Barang</label>
+      <input type="text" id="name" name="name" class="form-control" placeholder="Contoh: Sepatu Vans Original" required>
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Foto Barang</label>
+      <div class="file-upload">
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <label for="photo" class="file-label">
+          <i class="fas fa-camera"></i>
+          <span id="file-name">Pilih file gambar</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="condition">Kondisi Barang</label>
+      <select id="condition" name="condition">
+        <option value="Baru">Baru</option>
+        <option value="Bekas 90%">Bekas 90%</option>
+        <option value="Bekas 80%">Bekas 80%</option>
+        <option value="Bekas 70%">Bekas 70%</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="wanted_item">Ingin ditukar dengan</label>
+      <input type="text" id="wanted_item" name="wanted_item" class="form-control" placeholder="Contoh: Meja atau Sofa">
+    </div>
+
+    <div class="form-group">
+      <label>Paket Tampilan</label>
+      <div class="package-options">
+        <label class="package-option">
+          <input type="radio" name="package" value="free" checked>
+          <div class="package-content">
+            <h4>STANDARD (GRATIS)</h4>
+            <p>• Tampil di listing biasa</p>
+          </div>
+        </label>
+
+        <label class="package-option">
+          <input type="radio" name="package" value="highlight">
+          <div class="package-content">
+            <h4>HIGHLIGHT (Rp 500)</h4>
+            <p>• Border kuning 24 jam</p>
+            <p>• Prioritas di hasil pencarian</p>
+          </div>
+        </label>
+
+        <label class="package-option">
+          <input type="radio" name="package" value="featured">
+          <div class="package-content">
+            <h4>FEATURED (Rp 2.000)</h4>
+            <p>• Tampil di halaman utama 3 hari</p>
+            <p>• Posisi top 3</p>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">
+      <i class="fas fa-upload"></i> UPLOAD BARANG
+    </button>
+  </form>
+</div>
+{% endblock %}
